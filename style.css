@@ -15,7 +15,9 @@
   --card-height: 20rem;
   --card-width: 16rem;
   --card-red: #ef4444;
+  --card-red-darker: #dc2626;
   --card-green: #86efac;
+  --card-green-darker: #4ade80;
   --card-gray: #d1d5db;
   --background-main: #eef2ff;
   --color-main: #a5b4fc;
@@ -84,6 +86,10 @@ main > form > button[type="button"] {
   background-color: var(--card-red);
   align-self: flex-end;
   box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 0.5);
+}
+
+main > form > button[type="button"]:hover {
+  background-color: var(--card-red-darker);
 }
 
 main > form > button[type="button"] > svg {
@@ -156,6 +162,15 @@ main > form > .submit-input > #submit-btn {
   padding: calc(var(--card-padding) / 2);
   border-radius: var(--card-radius);
   width: 100%;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+main > form > .submit-input > #submit-btn:hover {
+  background-color: var(--card-green-darker);
+}
+
+main > form > .submit-input > #submit-btn:active {
+  scale: 0.95;
 }
 
 .overlay {
