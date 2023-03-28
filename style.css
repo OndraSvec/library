@@ -5,21 +5,40 @@
   margin: 0;
   padding: 0;
   font-family: roboto, sans-serif;
+  border: none;
+  outline: none;
 }
 
 :root {
   --card-padding: 1rem;
+  --card-radius: 0.5rem;
+  --card-height: 20rem;
+  --card-width: 16rem;
+  --card-red: #ef4444;
+  --card-green: #86efac;
+  --card-gray: #d1d5db;
+  --background-main: #eef2ff;
+  --color-main: #a5b4fc;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 body {
+  flex-grow: 1;
   background-color: white;
   color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 header > h1 {
@@ -28,6 +47,125 @@ header > h1 {
   font-size: clamp(1rem, 10vmin, 2rem);
 }
 
+main {
+  background-color: var(--background-main);
+  box-shadow: inset 0 4px 8px 0 rgb(0 0 0 / 0.1);
+  flex-grow: 1;
+}
+
 main > form {
+  background-color: var(--background-main);
   padding: var(--card-padding);
+  border-radius: var(--card-padding);
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: var(--card-height);
+  width: var(--card-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main > form > p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+main > form > button[type="button"] {
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0.175rem;
+  background-color: var(--card-red);
+  align-self: flex-end;
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 0.5);
+}
+
+main > form > button[type="button"] > svg {
+  fill: white;
+}
+
+main > form > button[type="button"] > svg:hover {
+  transform: rotate(90deg);
+  transition: all 0.5s;
+}
+
+main > form > .form-input {
+  background-color: white;
+  height: 2rem;
+  padding: 0.4rem;
+  border-radius: var(--card-radius);
+  width: 90%;
+  position: relative;
+  border-bottom: 1px solid var(--color-main);
+}
+
+main > form > .form-input > input {
+  width: 100%;
+  height: 100%;
+}
+
+main > form > .form-input > label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+main > form > .form-input > label > .label-name {
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.5rem;
+  color: var(--color-main);
+}
+
+main > form > .form-input > input:focus + label > .label-name,
+main > form > .form-input > input:valid + label > .label-name {
+  transform: scale(0);
+}
+
+main > form > .form-input-checkbox {
+  display: flex;
+  gap: 0.75rem;
+}
+
+main > form > .form-input-checkbox > label {
+  color: var(--color-main);
+  font-weight: 700;
+}
+
+main > form > .submit-input {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+main > form > .submit-input > #submit-btn {
+  background-color: var(--card-green);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: calc(var(--card-padding) / 2);
+  border-radius: var(--card-radius);
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.overlay .active {
+  background-color: rgba(0, 0, 0, 0.25);
 }
