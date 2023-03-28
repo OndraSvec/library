@@ -16,11 +16,13 @@
   --card-width: 16rem;
   --card-red: #ef4444;
   --card-red-darker: #dc2626;
-  --card-green: #86efac;
-  --card-green-darker: #4ade80;
+  --card-green: #2dd4bf;
+  --card-green-darker: #0d9488;
   --card-gray: #d1d5db;
-  --background-main: #eef2ff;
-  --color-main: #a5b4fc;
+  --background-main: #f0fdfa;
+  --box-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --box-shadow-smin: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1), inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
 html {
@@ -76,6 +78,7 @@ main > form > p {
   text-transform: uppercase;
   font-size: 1.1rem;
   font-weight: 900;
+  color: var(--card-green-darker);
 }
 
 main > form > button[type="button"] {
@@ -85,11 +88,16 @@ main > form > button[type="button"] {
   padding: 0.175rem;
   background-color: var(--card-red);
   align-self: flex-end;
-  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 0.5);
+  box-shadow: var(--box-shadow-sm);
 }
 
 main > form > button[type="button"]:hover {
   background-color: var(--card-red-darker);
+  cursor: pointer;
+}
+
+main > form > button[type="button"]:active {
+  scale: 0.95;
 }
 
 main > form > button[type="button"] > svg {
@@ -106,9 +114,9 @@ main > form > .form-input {
   height: 2rem;
   padding: 0.4rem;
   border-radius: var(--card-radius);
-  width: 90%;
+  width: 100%;
   position: relative;
-  border-bottom: 1px solid var(--color-main);
+  border-bottom: 1px solid var(--card-green-darker);
 }
 
 main > form > .form-input > input {
@@ -130,7 +138,7 @@ main > form > .form-input > label > .label-name {
   position: absolute;
   bottom: 0.4rem;
   left: 0.5rem;
-  color: var(--color-main);
+  color: var(--card-green-darker);
 }
 
 main > form > .form-input > input:focus + label > .label-name,
@@ -139,17 +147,73 @@ main > form > .form-input > input:valid + label > .label-name {
 }
 
 main > form > .form-input-checkbox {
-  display: flex;
-  gap: 0.75rem;
+  position: relative;
+  width: 80%;
 }
 
 main > form > .form-input-checkbox > label {
-  color: var(--color-main);
+  color: var(--card-green-darker);
   font-weight: 700;
 }
 
+main > form > .form-input-checkbox > input {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2.5rem;
+  border: 0.125rem solid var(--card-green-darker);
+  border-radius: var(--card-radius);
+  cursor: pointer;
+  box-shadow: var(--box-shadow-smin);
+}
+
+main > form > .form-input-checkbox > input::before {
+  content: "";
+  top: 0.1rem;
+  bottom: 0.1rem;
+  left: 0.1rem;
+  width: 0.8rem;
+  background-color: var(--card-green-darker);
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-sm);
+  z-index: 3;
+}
+
+main > form > .form-input-checkbox > input::after {
+  content: "No";
+  position: absolute;
+  right: 0.175rem;
+  color: var(--card-green-darker);
+  font-size: 0.55rem;
+  font-weight: 700;
+  bottom: 0.15rem;
+}
+
+main > form > .form-input-checkbox > input:checked {
+  background-color: var(--card-green);
+}
+
+main > form > .form-input-checkbox > input:checked::before {
+  transform: translate(150%);
+  border: 1px solid var(--card-green-darker);
+  background-color: white;
+}
+
+main > form > .form-input-checkbox > input:checked::after {
+  content: "Yes";
+  position: absolute;
+  left: 0.175rem;
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  bottom: 0.15rem;
+}
+
 main > form > .submit-input {
-  width: 90%;
+  width: 80%;
   display: flex;
   justify-content: center;
 }
@@ -162,11 +226,12 @@ main > form > .submit-input > #submit-btn {
   padding: calc(var(--card-padding) / 2);
   border-radius: var(--card-radius);
   width: 100%;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: var(--box-shadow-sm);
 }
 
 main > form > .submit-input > #submit-btn:hover {
   background-color: var(--card-green-darker);
+  cursor: pointer;
 }
 
 main > form > .submit-input > #submit-btn:active {
@@ -179,8 +244,5 @@ main > form > .submit-input > #submit-btn:active {
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-.overlay .active {
   background-color: rgba(0, 0, 0, 0.25);
 }
