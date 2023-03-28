@@ -9,6 +9,7 @@
 body {
   background-color: white;
   color: black;
+  font-family: roboto, sans-serif;
 }
 
 header {
@@ -21,4 +22,5 @@ header > h1 {
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1px black;
+  letter-spacing: 0.1rem;
 }
