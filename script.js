@@ -57,12 +57,29 @@ function displayBooks() {
   const bookTitle = document.createElement("p");
   const bookAuthor = document.createElement("p");
   const bookPages = document.createElement("p");
+  const readBtn = document.createElement("button");
+  const removeBtn = document.createElement("button");
+  const btns = document.createElement("div");
+  btns.classList.add("buttons-container");
+  readBtn.textContent = "Read";
+  readBtn.classList.add("buttons", "readGreen");
+  removeBtn.textContent = "Remove";
+  removeBtn.classList.add("buttons", "readRed");
   bookTitle.textContent = titleInp.value;
-  bookAuthor.textContent = authorInp.value;
-  bookPages.textContent = pagesInp.value;
+  bookAuthor.textContent = `by ${authorInp.value}`;
+  bookPages.textContent = `${pagesInp.value} pages`;
+  [bookTitle, bookAuthor, bookPages].forEach((item) =>
+    item.setAttribute(
+      "style",
+      "font-weight: 700; color: var(--card-green-darker);"
+    )
+  );
   newBook.appendChild(bookTitle);
   newBook.appendChild(bookAuthor);
   newBook.appendChild(bookPages);
+  btns.appendChild(readBtn);
+  btns.appendChild(removeBtn);
+  newBook.appendChild(btns);
   container.appendChild(newBook);
 }
 

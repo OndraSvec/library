@@ -263,7 +263,7 @@ main > .container {
   padding: var(--card-padding);
   border-radius: var(--card-padding);
   box-shadow: var(--box-shadow-md);
-  height: calc(var(--card-height) * 0.8);
+  height: calc(var(--card-height) * 0.85);
   width: var(--card-width);
   display: flex;
   flex-direction: column;
@@ -271,13 +271,22 @@ main > .container {
   align-items: center;
 }
 
+.buttons-container {
+  width: 90%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .buttons {
+  width: 100%;
   color: white;
   font-size: 1.25rem;
   font-weight: 700;
   padding: calc(var(--card-padding) / 2);
   border-radius: var(--card-radius);
-  width: 80%;
   box-shadow: var(--box-shadow-sm);
 }
 
