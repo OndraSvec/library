@@ -263,12 +263,46 @@ main > .container {
   padding: var(--card-padding);
   border-radius: var(--card-padding);
   box-shadow: var(--box-shadow-md);
-  height: var(--card-height);
+  height: calc(var(--card-height) * 0.8);
   width: var(--card-width);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.buttons {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: calc(var(--card-padding) / 2);
+  border-radius: var(--card-radius);
+  width: 80%;
+  box-shadow: var(--box-shadow-sm);
+}
+
+.buttons:hover {
+  cursor: pointer;
+}
+
+.buttons:active {
+  scale: 0.95;
+}
+
+.readGreen {
+  background-color: var(--card-green);
+}
+
+.readGreen:hover {
+  background-color: var(--card-green-darker);
+}
+
+.readRed {
+  background-color: var(--card-red);
+}
+
+.readRed:hover {
+  background-color: var(--card-red-darker);
 }
 
 .overlay {
