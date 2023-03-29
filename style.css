@@ -72,6 +72,8 @@ main > form {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  scale: 0;
+  transition: scale 0.3s;
 }
 
 main > form > p {
@@ -143,7 +145,7 @@ main > form > .form-input > label > .label-name {
 
 main > form > .form-input > input:focus + label > .label-name,
 main > form > .form-input > input:valid + label > .label-name {
-  transform: scale(0);
+  scale: 0;
 }
 
 main > form > .form-input-checkbox {
@@ -227,6 +229,15 @@ main > #add-book-btn {
   bottom: 1rem;
   right: 1rem;
   background-color: var(--card-green);
+}
+
+main > #add-book-btn:hover {
+  background-color: var(--card-green-darker);
+  cursor: pointer;
+}
+
+main > #add-book-btn:active {
+  scale: 0.95;
 }
 
 main > #add-book-btn > svg {
