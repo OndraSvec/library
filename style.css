@@ -64,7 +64,7 @@ main > form {
   background-color: var(--background-main);
   padding: var(--card-padding);
   border-radius: var(--card-padding);
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 50%;
   left: 50%;
