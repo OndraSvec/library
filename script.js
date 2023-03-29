@@ -80,7 +80,18 @@ function displayBooks() {
   btns.appendChild(readBtn);
   btns.appendChild(removeBtn);
   newBook.appendChild(btns);
+  [newBook, readBtn, removeBtn].forEach((item) =>
+    item.setAttribute("data-attribute", `${bookLibrary.length - 1}`)
+  );
   container.appendChild(newBook);
+}
+
+function addBookNum() {
+  // eslint-disable-next-line no-return-assign, no-param-reassign
+  bookLibrary.forEach((book) => {
+    // eslint-disable-next-line no-param-reassign
+    book.dataAttribute = bookLibrary.indexOf(book);
+  });
 }
 
 function addBook(e) {
@@ -92,6 +103,8 @@ function addBook(e) {
   hideOverlay();
   hideForm();
   emptyInputValues();
+  addBookNum();
+  console.log(bookLibrary);
 }
 
 form.addEventListener("submit", addBook);
