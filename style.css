@@ -163,7 +163,8 @@ main > form > .form-input-checkbox > input {
   bottom: 0;
   right: 0;
   width: 2.5rem;
-  border: 0.125rem solid var(--card-green-darker);
+  background-color: var(--card-red);
+  border: 0.125rem solid var(--card-red-darker);
   border-radius: var(--card-radius);
   cursor: pointer;
   box-shadow: var(--box-shadow-smin);
@@ -175,41 +176,20 @@ main > form > .form-input-checkbox > input::before {
   bottom: 0.1rem;
   left: 0.1rem;
   width: 0.8rem;
-  background-color: var(--card-green-darker);
+  background-color: white;
   position: absolute;
   border-radius: 50%;
   box-shadow: var(--box-shadow-sm);
   z-index: 3;
 }
 
-main > form > .form-input-checkbox > input::after {
-  content: "No";
-  position: absolute;
-  right: 0.175rem;
-  color: var(--card-green-darker);
-  font-size: 0.55rem;
-  font-weight: 700;
-  bottom: 0.15rem;
-}
-
 main > form > .form-input-checkbox > input:checked {
   background-color: var(--card-green);
+  border-color: var(--card-green-darker);
 }
 
 main > form > .form-input-checkbox > input:checked::before {
   transform: translate(150%);
-  border: 1px solid var(--card-green-darker);
-  background-color: white;
-}
-
-main > form > .form-input-checkbox > input:checked::after {
-  content: "Yes";
-  position: absolute;
-  left: 0.175rem;
-  color: white;
-  font-size: 0.55rem;
-  font-weight: 700;
-  bottom: 0.15rem;
 }
 
 main > form > .submit-input {
