@@ -64,7 +64,9 @@ function displayBooks() {
   readBtn.textContent = "Read";
   readBtn.classList.add("buttons", "readGreen");
   removeBtn.textContent = "Remove";
-  removeBtn.classList.add("buttons", "readRed");
+  removeBtn.classList.add("buttons", "removeRed");
+  // eslint-disable-next-line no-use-before-define
+  removeBtn.addEventListener("click", removeBook);
   bookTitle.textContent = titleInp.value;
   bookAuthor.textContent = `by ${authorInp.value}`;
   bookPages.textContent = `${pagesInp.value} pages`;
@@ -104,7 +106,23 @@ function addBook(e) {
   hideForm();
   emptyInputValues();
   addBookNum();
-  console.log(bookLibrary);
 }
 
 form.addEventListener("submit", addBook);
+
+function removeBookFromArray(e) {
+  return bookLibrary.splice(
+    bookLibrary.indexOf(e.target.getAttribute("data-attribute"), 1)
+  );
+}
+
+function removeBookCard(e) {
+  const bookNum = e.target;
+  const bookDiv = bookNum.parentNode.parentNode;
+  container.removeChild(bookDiv);
+}
+
+function removeBook(e) {
+  removeBookFromArray(e);
+  removeBookCard(e);
+}

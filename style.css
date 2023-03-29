@@ -306,11 +306,13 @@ main > .container {
   background-color: var(--card-green-darker);
 }
 
-.readRed {
+.readRed,
+.removeRed {
   background-color: var(--card-red);
 }
 
-.readRed:hover {
+.readRed:hover,
+.removeRed:hover {
   background-color: var(--card-red-darker);
 }
 
