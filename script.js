@@ -6,14 +6,8 @@ const authorInp = document.getElementById("author");
 const pagesInp = document.getElementById("pages");
 const readInp = document.getElementById("read");
 const overlay = document.getElementById("overlay");
-const bookLibrary = [
-  {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    pages: 295,
-    read: "Not read",
-  },
-];
+const container = document.querySelector(".container");
+const bookLibrary = [];
 
 function showOverlay() {
   overlay.classList.add("overlay");
@@ -57,13 +51,29 @@ function readInput() {
   return "Read";
 }
 
+function displayBooks() {
+  const newBook = document.createElement("div");
+  newBook.classList.add("book");
+  const bookTitle = document.createElement("p");
+  const bookAuthor = document.createElement("p");
+  const bookPages = document.createElement("p");
+  bookTitle.textContent = titleInp.value;
+  bookAuthor.textContent = authorInp.value;
+  bookPages.textContent = pagesInp.value;
+  newBook.appendChild(bookTitle);
+  newBook.appendChild(bookAuthor);
+  newBook.appendChild(bookPages);
+  container.appendChild(newBook);
+}
+
 function addBook(e) {
-  e.preventDefault();
-  hideOverlay();
-  hideForm();
   bookLibrary.push(
     new Book(titleInp.value, authorInp.value, pagesInp.value, readInput())
   );
+  displayBooks();
+  e.preventDefault();
+  hideOverlay();
+  hideForm();
   emptyInputValues();
 }
 
