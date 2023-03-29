@@ -46,8 +46,12 @@ function Book(title, author, pages, read) {
   };
 }
 
+function checkStatus() {
+  return readInp.checked;
+}
+
 function readInput() {
-  if (!readInp.checked) return "Not read";
+  if (!checkStatus()) return "Not read";
   return "Read";
 }
 
@@ -61,8 +65,15 @@ function displayBooks() {
   const removeBtn = document.createElement("button");
   const btns = document.createElement("div");
   btns.classList.add("buttons-container");
-  readBtn.textContent = "Read";
-  readBtn.classList.add("buttons", "readGreen");
+  if (!checkStatus()) {
+    readBtn.textContent = "Not read";
+    readBtn.classList.add("buttons", "readRed");
+  } else {
+    readBtn.textContent = "Read";
+    readBtn.classList.add("buttons", "readGreen");
+  }
+  // eslint-disable-next-line no-use-before-define
+  readBtn.addEventListener("click", toggleReadStatus);
   removeBtn.textContent = "Remove";
   removeBtn.classList.add("buttons", "removeRed");
   // eslint-disable-next-line no-use-before-define
@@ -82,7 +93,7 @@ function displayBooks() {
   btns.appendChild(readBtn);
   btns.appendChild(removeBtn);
   newBook.appendChild(btns);
-  [newBook, readBtn, removeBtn].forEach((item) =>
+  [readBtn, removeBtn].forEach((item) =>
     item.setAttribute("data-attribute", `${bookLibrary.length - 1}`)
   );
   container.appendChild(newBook);
@@ -111,9 +122,13 @@ function addBook(e) {
 form.addEventListener("submit", addBook);
 
 function removeBookFromArray(e) {
-  return bookLibrary.splice(
-    bookLibrary.indexOf(e.target.getAttribute("data-attribute"), 1)
+  const bookCardDiv = e.target.parentNode.parentNode;
+  const titleOfBook = bookCardDiv.firstChild.textContent;
+  const theRightBookIndex = bookLibrary.findIndex(
+    (book) => book.title === titleOfBook
   );
+  bookLibrary.splice(theRightBookIndex, 1);
+  return bookLibrary;
 }
 
 function removeBookCard(e) {
@@ -125,4 +140,21 @@ function removeBookCard(e) {
 function removeBook(e) {
   removeBookFromArray(e);
   removeBookCard(e);
+}
+
+function toggleReadStatus(e) {
+  const bookCardDiv = e.target.parentNode.parentNode;
+  const titleOfBook = bookCardDiv.firstChild.textContent;
+  const theRightBook = bookLibrary.find((book) => book.title === titleOfBook);
+  if (e.target.textContent === "Read") {
+    e.target.textContent = "Not read";
+    e.target.classList.toggle("readRed");
+    e.target.classList.toggle("readGreen");
+    theRightBook.read = "Not read";
+  } else {
+    e.target.textContent = "Read";
+    e.target.classList.toggle("readRed");
+    e.target.classList.toggle("readGreen");
+    theRightBook.read = "Read";
+  }
 }
