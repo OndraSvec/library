@@ -104,9 +104,10 @@ main > form > button[type="button"]:active {
 
 main > form > button[type="button"] > svg {
   fill: white;
+  pointer-events: none;
 }
 
-main > form > button[type="button"] > svg:hover {
+main > form > button[type="button"]:hover > svg {
   transform: rotate(90deg);
   transition: all 0.5s;
 }
@@ -242,9 +243,10 @@ main > #add-book-btn:active {
 
 main > #add-book-btn > svg {
   fill: white;
+  pointer-events: none;
 }
 
-main > .overlay {
+.overlay {
   position: fixed;
   top: 0;
   bottom: 0;
