@@ -218,7 +218,22 @@ main > form > .submit-input > #submit-btn:active {
   scale: 0.95;
 }
 
-.overlay {
+main > #add-book-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--card-green);
+}
+
+main > #add-book-btn > svg {
+  fill: white;
+}
+
+main > .overlay {
   position: fixed;
   top: 0;
   bottom: 0;
