@@ -105,18 +105,26 @@ function addBook(e) {
   hideOverlay();
   hideForm();
   emptyInputValues();
-  console.log(bookLibrary);
 }
 
 form.addEventListener("submit", addBook);
 
-function removeBookFromArray(e) {
+function findBookIndex(e) {
   const bookCardDiv = e.target.parentNode.parentNode;
   const titleOfBook = bookCardDiv.firstChild.textContent;
+  const authorOfBook = bookCardDiv.childNodes[1].textContent;
+  const pagesOfBook = bookCardDiv.childNodes[2].textContent;
   const theRightBookIndex = bookLibrary.findIndex(
-    (book) => book.title === titleOfBook
+    (book) =>
+      book.title === titleOfBook &&
+      `by ${book.author}` === authorOfBook &&
+      `${book.pages} pages` === pagesOfBook
   );
-  bookLibrary.splice(theRightBookIndex, 1);
+  return theRightBookIndex;
+}
+
+function removeBookFromArray(e) {
+  bookLibrary.splice(findBookIndex(e), 1);
   return bookLibrary;
 }
 
@@ -129,23 +137,18 @@ function removeBookCard(e) {
 function removeBook(e) {
   removeBookFromArray(e);
   removeBookCard(e);
-  console.log(bookLibrary);
 }
 
 function toggleReadStatus(e) {
-  const bookCardDiv = e.target.parentNode.parentNode;
-  const titleOfBook = bookCardDiv.firstChild.textContent;
-  const theRightBook = bookLibrary.find((book) => book.title === titleOfBook);
   if (e.target.textContent === "Read") {
     e.target.textContent = "Not read";
     e.target.classList.toggle("readRed");
     e.target.classList.toggle("readGreen");
-    theRightBook.read = "Not read";
+    bookLibrary[findBookIndex(e)].read = "Not read";
   } else {
     e.target.textContent = "Read";
     e.target.classList.toggle("readRed");
     e.target.classList.toggle("readGreen");
-    theRightBook.read = "Read";
+    bookLibrary[findBookIndex(e)].read = "Read";
   }
-  console.log(bookLibrary);
 }
